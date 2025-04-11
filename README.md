@@ -34,6 +34,57 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+### Training the Model
+
+1. Prepare your dataset:
+   - Place medical images in `data/raw/images/`
+   - Place corresponding masks in `data/raw/masks/`
+   - Supported formats: JPG, PNG, NIfTI (.nii, .nii.gz)
+
+2. Train the model:
+```bash
+python train.py
+```
+
+Common training parameters:
+```bash
+python train.py --epochs 100 --batch_size 8 --learning_rate 1e-4 --img_size 256
+```
+
+### Using Configuration Files
+
+1. Save a configuration:
+```bash
+python train.py --epochs 50 --batch_size 4 --save_config my_config.json
+```
+
+2. Load a configuration:
+```bash
+python train.py --load_config my_config.json
+```
+
+### Example Training Scenarios
+
+The `train_examples.py` script provides pre-configured training scenarios:
+
+```bash
+python train_examples.py --example 1
+```
+
+Available examples:
+- Example 1: Basic training with default parameters
+- Example 2: Fast training with fewer epochs
+- Example 3: Higher resolution images with more filters
+- Example 4: Training with slower learning rate
+- Example 5: Training with custom data directory
+
+To save all example configurations:
+```bash
+python train_examples.py --save_all_configs
+```
+
+
+
 ## Usage
 
 1. Start the Streamlit application:
